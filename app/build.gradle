@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -13,6 +14,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -30,11 +32,20 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
+    implementation platform('android:codebase:0.4.3')
+    implementation 'android:codebase-data'
+    implementation 'android:codebase-presentation'
+    implementation 'android:codebase-utils'
+
+    kapt 'androidx.room:room-compiler:2.3.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.core:core-ktx:1.6.0'
 

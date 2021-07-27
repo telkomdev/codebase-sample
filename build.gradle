@@ -15,6 +15,19 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://jitpack.io"
+        }
+        maven {
+            url "https://nexus.playcourt.id/repository/dev/"
+            content {
+                includeGroup "android"
+            }
+            credentials {
+                username project.properties["nexus_username"] ?: "developer"
+                password project.properties["nexus_password"] ?: "password"
+            }
+        }
     }
 }
 
